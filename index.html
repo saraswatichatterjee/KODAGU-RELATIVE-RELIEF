@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet.photon.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
-       <style>
+        <style>
 
 html, body, #map {
     width: 100%;
@@ -48,12 +48,12 @@ html, body, #map {
 }
 
 </style>
-        <title>KODAGU RELATIVE RELIEF </title>
+        <title>KODAGU ABSOLUTE RELIEF</title>
     </head>
-   <body>
+    <body>
 
 <div id="titlebar">
-    KODAGU RELATIVE RELIEF
+    KODAGU ABSOLUTE RELIEF
 </div>
 
 <div id="map">
@@ -164,7 +164,7 @@ title.onAdd = function (map) {
     return this._div;
 };
 title.update = function () {
-    this._div.innerHTML = '<h2>KODAGU RELATIVE RELIEF</h2>';
+    this._div.innerHTML = '<h2>KODAGU ABSOLUTE RELIEF</h2>';
 };
 title.addTo(map);
 
@@ -186,7 +186,7 @@ abstract.hide = function () {
             abstract.show = function () {
                 this._div.classList.remove("abstract");
                 this._div.classList.add("abstractUncollapsed");
-                this._div.innerHTML = 'Blue areas have high relative relief with large elevation differences between hilltops and valleys, indicating rugged terrain, while red areas have low relative relief with small elevation differences, indicating flat or gently rolling terrain.';
+                this._div.innerHTML = 'Blue areas have high Absolute Relief meaning high elevation above sea level with mountainous/highland terrain, while red areas have low Absolute Relief meaning low elevation near sea level with plains/lowland terrain.';
         };
         abstract.addTo(map);
         var zoomControl = L.control.zoom({
@@ -239,8 +239,8 @@ abstract.hide = function () {
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">RR</th>\
-                        <td class="visible-with-data" id="RR">' + (feature.properties['RR'] !== null ? autolinker.link(String(feature.properties['RR']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">AR</th>\
+                        <td class="visible-with-data" id="AR">' + (feature.properties['AR'] !== null ? autolinker.link(String(feature.properties['AR']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -279,15 +279,15 @@ abstract.hide = function () {
         });
         bounds_group.addLayer(layer_MEGADATA_K_1);
         map.addLayer(layer_MEGADATA_K_1);
-        map.createPane('pane_idw_rr_2');
-        map.getPane('pane_idw_rr_2').style.zIndex = 402;
-        var img_idw_rr_2 = 'data/idw_rr_2.png';
-        var img_bounds_idw_rr_2 = [[11.91953941331789,75.35712935015964],[12.839743592070432,76.19141557991337]];
-        var layer_idw_rr_2 = new L.imageOverlay(img_idw_rr_2,
-                                              img_bounds_idw_rr_2,
-                                              {pane: 'pane_idw_rr_2'});
-        bounds_group.addLayer(layer_idw_rr_2);
-        map.addLayer(layer_idw_rr_2);
+        map.createPane('pane_idw_ar_2');
+        map.getPane('pane_idw_ar_2').style.zIndex = 402;
+        var img_idw_ar_2 = 'data/idw_ar_2.png';
+        var img_bounds_idw_ar_2 = [[11.91953941331789,75.35712935015964],[12.839743592070432,76.19141557991337]];
+        var layer_idw_ar_2 = new L.imageOverlay(img_idw_ar_2,
+                                              img_bounds_idw_ar_2,
+                                              {pane: 'pane_idw_ar_2'});
+        bounds_group.addLayer(layer_idw_ar_2);
+        map.addLayer(layer_idw_ar_2);
         function pop_Kodagu_bound_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -346,7 +346,7 @@ abstract.hide = function () {
         map.addLayer(layer_Kodagu_bound_3);
         var overlaysTree = [
             {label: '<img src="legend/Kodagu_bound_3.png" /> Kodagu_bound', layer: layer_Kodagu_bound_3},
-            {label: "idw_rr", layer: layer_idw_rr_2},
+            {label: "idw_ar", layer: layer_idw_ar_2},
             {label: '<img src="legend/MEGADATA_K_1.png" /> MEGADATA_K', layer: layer_MEGADATA_K_1},
             {label: "OSM Standard", layer: layer_OSMStandard_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
